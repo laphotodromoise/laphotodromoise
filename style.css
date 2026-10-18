@@ -105,3 +105,7 @@ footer.site a{color:var(--fg);text-decoration:none}footer.site a:hover{color:var
 @keyframes defile{to{transform:translateX(calc(-50% - 9px))}}
 @media(prefers-reduced-motion:reduce){.logos-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}.logos li:nth-child(n+13){display:none}.logos{-webkit-mask-image:none;mask-image:none}}
 @media(max-width:560px){.logos li{width:130px;height:90px;padding:8px}}
+
+.frames{display:flex;gap:16px;align-items:flex-start}
+.frames img{flex-basis:0;min-width:0;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;border-radius:var(--r)}
+@media(max-width:700px){.frames{flex-wrap:wrap}.frames img{flex-basis:100%}}
