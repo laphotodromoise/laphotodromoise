@@ -98,8 +98,8 @@ footer.site a{color:var(--fg);text-decoration:none}footer.site a:hover{color:var
 .logos{overflow:hidden;margin:0 0 40px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .logos-track{list-style:none;margin:0;padding:0;display:flex;gap:18px;width:max-content;animation:defile 70s linear infinite}
 .logos:hover .logos-track{animation-play-state:paused}
-.logos li{flex:0 0 auto;width:150px;height:100px;background:#fff;border-radius:6px;display:grid;place-items:center;padding:10px}
-.logos img{max-width:100%;max-height:100%;object-fit:contain}
+.logos li{flex:0 0 auto;width:180px;height:120px;background:#fff;border-radius:6px;padding:12px;display:flex}
+.logos img{width:100%;height:100%;object-fit:contain}
 @keyframes defile{to{transform:translateX(calc(-50% - 9px))}}
 @media(prefers-reduced-motion:reduce){.logos-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}.logos li:nth-child(n+25){display:none}.logos{-webkit-mask-image:none;mask-image:none}}
-@media(max-width:560px){.logos li{width:110px;height:76px}}
+@media(max-width:560px){.logos li{width:130px;height:90px;padding:8px}}
