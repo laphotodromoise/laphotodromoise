@@ -95,11 +95,13 @@ footer.site a{color:var(--fg);text-decoration:none}footer.site a:hover{color:var
 .accroche{font-size:1.3rem;line-height:1.7;text-align:center;font-weight:400}
 .accroche strong{font-weight:800}
 .tricolore{font-weight:800;color:#fff;background:linear-gradient(90deg,#1d4fd8 0 33.4%,#fff 33.4% 66.6%,#ef4135 66.6% 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.logos{overflow:hidden;margin:0 0 40px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.logos-track{list-style:none;margin:0;padding:0;display:flex;gap:18px;width:max-content;animation:defile 70s linear infinite}
+.logos-wrap{display:grid;gap:18px;margin:0 0 40px}
+.logos{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.logos-track{list-style:none;margin:0;padding:0;display:flex;gap:18px;width:max-content;animation:defile 45s linear infinite}
+.logos.inverse .logos-track{animation-direction:reverse}
 .logos:hover .logos-track{animation-play-state:paused}
 .logos li{flex:0 0 auto;width:180px;height:120px;background:#fff;border-radius:6px;padding:12px;display:flex}
 .logos img{width:100%;height:100%;object-fit:contain}
 @keyframes defile{to{transform:translateX(calc(-50% - 9px))}}
-@media(prefers-reduced-motion:reduce){.logos-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}.logos li:nth-child(n+25){display:none}.logos{-webkit-mask-image:none;mask-image:none}}
+@media(prefers-reduced-motion:reduce){.logos-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}.logos li:nth-child(n+13){display:none}.logos{-webkit-mask-image:none;mask-image:none}}
 @media(max-width:560px){.logos li{width:130px;height:90px;padding:8px}}
