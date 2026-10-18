@@ -2,7 +2,8 @@
 --head:'Montserrat',Arial,sans-serif;--body:'Montserrat',Arial,sans-serif;--r:6px;--rb:4px}
 .topbar{background:#111;font-size:.82rem;color:var(--muted)}.tb{display:flex;justify-content:space-between;gap:12px;padding:8px 20px;flex-wrap:wrap}
 .topbar a{color:var(--muted);text-decoration:none}.topbar a:hover{color:var(--accent)}
-header.site{background:#000;position:relative;border-bottom:1px solid var(--line)}
+header.site{background:#000;position:sticky;top:0;z-index:60;border-bottom:1px solid var(--line);box-shadow:0 2px 12px rgba(0,0,0,.6)}
+html{scroll-padding-top:90px}
 .hd{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:20px}
 .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--fg)}.brand img{width:64px}
 .brand strong{display:block;font-size:1.2rem;text-transform:uppercase;letter-spacing:1px}.brand small{color:var(--accent);font-style:italic}
