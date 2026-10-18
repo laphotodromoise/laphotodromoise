@@ -90,3 +90,5 @@ footer.site a{color:var(--fg);text-decoration:none}footer.site a:hover{color:var
  .hide-m{display:none}
 }
 @media(max-width:560px){.g3,.g4,.row2,.ft{grid-template-columns:1fr}.frames{grid-template-columns:1fr 1fr}.gallery{columns:2}h1{font-size:2rem!important}}
+.hero-banner{padding:0;aspect-ratio:1522/421;max-width:100%;background-size:cover;background-position:center}
+.title{font-size:1.9rem}
