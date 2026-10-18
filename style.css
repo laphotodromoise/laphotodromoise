@@ -92,3 +92,6 @@ footer.site a{color:var(--fg);text-decoration:none}footer.site a:hover{color:var
 @media(max-width:560px){.g3,.g4,.row2,.ft{grid-template-columns:1fr}.frames{grid-template-columns:1fr 1fr}.gallery{columns:2}h1{font-size:2rem!important}}
 .hero-banner{padding:0;aspect-ratio:1522/421;max-width:100%;background-size:cover;background-position:center}
 .title{font-size:1.9rem}
+.accroche{font-size:1.3rem;line-height:1.7;text-align:center;font-weight:400}
+.accroche strong{font-weight:800}
+.tricolore{font-weight:800;color:#fff;background:linear-gradient(90deg,#1d4fd8 0 33.4%,#fff 33.4% 66.6%,#ef4135 66.6% 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
