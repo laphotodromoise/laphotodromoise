@@ -1,0 +1,28 @@
+name: Capturer le code du site original
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/capture.yml']
+permissions:
+  contents: write
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Télécharger les pages
+        run: |
+          mkdir -p _original
+          for p in "" nosbornes photobooth-mariage les-dossiers contact/devis; do
+            n=$(echo "${p:-accueil}" | tr '/' '-')
+            curl -sL -A "Mozilla/5.0" "https://www.laphotodromoise.com/$p/" -o "_original/$n.html"
+          done
+          ls -la _original
+      - name: Enregistrer
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add _original
+          git diff --cached --quiet || git commit -m "Capture du code du site original"
+          git push
