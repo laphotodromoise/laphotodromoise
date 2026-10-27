@@ -193,3 +193,4 @@ background:radial-gradient(ellipse 70% 90% at 50% 120%,rgba(196,138,82,.32),tran
 .card.qual h3,.card.qual p{padding-inline:12px}
 .grid.g3:has(> .card.qual){gap:16px}
 @media(min-width:1260px){.grid.g3:has(> .card.qual){margin-inline:-28px}}
+.mariage-photo{width:100%;height:auto;max-height:640px;object-fit:cover;border-radius:var(--r);box-shadow:0 18px 50px rgba(0,0,0,.5)}
