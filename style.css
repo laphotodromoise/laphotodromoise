@@ -109,3 +109,4 @@ footer.site a{color:var(--fg);text-decoration:none}footer.site a:hover{color:var
 .frames{display:flex;gap:16px;align-items:flex-start}
 .frames img{flex-basis:0;min-width:0;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;border-radius:var(--r)}
 @media(max-width:700px){.frames{flex-wrap:wrap}.frames img{flex-basis:100%}}
+.prices{grid-template-columns:1fr;max-width:760px;margin-inline:auto;gap:28px}
