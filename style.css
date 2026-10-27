@@ -180,3 +180,10 @@ background:linear-gradient(105deg,transparent 35%,rgba(255,248,235,.95) 50%,tran
 .borne-photo{max-height:640px;width:auto;border-radius:var(--r);box-shadow:0 18px 50px rgba(0,0,0,.55);border:1px solid #3a2c1e}
 .flogo-large{width:100%;max-width:300px;height:auto;mix-blend-mode:lighten}
 @media(max-width:560px){.flogo-large{max-width:260px}}
+/* Fond des titres de page : noir et cuivre */
+.hero-cuivre{position:relative;overflow:hidden;isolation:isolate;padding:110px 0 100px;
+background:radial-gradient(ellipse 70% 90% at 50% 120%,rgba(196,138,82,.32),transparent 65%),radial-gradient(ellipse 50% 60% at 10% -10%,rgba(196,138,82,.14),transparent 60%),#050505;border-bottom:1px solid rgba(196,138,82,.35)}
+.hero-cuivre::before{content:"";position:absolute;z-index:-1;right:-4%;top:50%;width:min(46vw,520px);aspect-ratio:847/900;transform:translateY(-50%) rotate(-8deg);background:url("images/logo-anim.png") center/contain no-repeat;opacity:.07;filter:grayscale(.2) brightness(1.6)}
+.hero-cuivre::after{content:"";position:absolute;left:50%;bottom:0;width:min(60%,520px);height:2px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,#d9a96a,transparent)}
+.hero-cuivre .sub{color:#e8d6c0}
+@media(max-width:900px){.hero-cuivre{padding:80px 0 70px}.hero-cuivre::before{width:70vw;right:-20%}}
