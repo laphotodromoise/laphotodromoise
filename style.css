@@ -174,3 +174,6 @@ background:linear-gradient(105deg,transparent 35%,rgba(255,248,235,.95) 50%,tran
 @keyframes logoReflet{0%{background-position:150% 0}18%,100%{background-position:-50% 0}}
 @keyframes flash{0%{opacity:0}12%{opacity:.95}100%{opacity:0}}
 @media(prefers-reduced-motion:reduce){.hero-anim-logo,.hero-anim-reflet,.hero-anim-flash{animation:none}.hero-anim-flash{display:none}}
+
+.option img{width:100%;height:auto;max-width:100%;aspect-ratio:4/5;object-fit:contain;background:#1b1612;border-radius:10px}
+.option img.photo{object-fit:cover;background:none}
