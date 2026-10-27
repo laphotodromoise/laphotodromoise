@@ -134,3 +134,21 @@ footer.site a{color:var(--fg);text-decoration:none}footer.site a:hover{color:var
 @media(max-width:1100px){.options{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:900px){.offres{grid-template-columns:1fr;max-width:520px;margin-inline:auto}.options{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.options{grid-template-columns:1fr}.formules-titre{font-size:1.6rem}}
+/* Menu modernisé + reflet au survol */
+header.site nav ul{gap:8px;align-items:center}
+header.site nav a{position:relative;display:inline-block;overflow:hidden;isolation:isolate;padding:10px 18px;border-radius:999px;border:1px solid transparent;font-size:.8rem;font-weight:700;letter-spacing:1.2px;color:#e9e2da;transition:color .25s,background-color .25s,border-color .25s,transform .25s}
+header.site nav a::after{content:"";position:absolute;z-index:-1;top:-20%;bottom:-20%;left:-75%;width:45%;background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,0) 20%,rgba(255,240,220,.55) 50%,rgba(255,255,255,0) 80%,transparent 100%);transform:skewX(-20deg);pointer-events:none}
+header.site nav a:hover,header.site nav a:focus-visible{color:#fff;background:rgba(196,138,82,.14);border-color:rgba(196,138,82,.55);transform:translateY(-1px);outline:none}
+header.site nav a:hover::after,header.site nav a:focus-visible::after{animation:reflet .8s ease forwards}
+header.site nav a.on{color:#fff;border-color:rgba(196,138,82,.7);background:rgba(196,138,82,.1)}
+header.site nav li:last-child a{color:#140d06;background:linear-gradient(135deg,#a8743f,#d9a96a 50%,#a8743f);border-color:#d9a96a;box-shadow:0 4px 18px rgba(196,138,82,.25)}
+header.site nav li:last-child a:hover{color:#140d06;background:linear-gradient(135deg,#b88049,#ecc184 50%,#b88049);box-shadow:0 6px 24px rgba(196,138,82,.4)}
+header.site nav li:last-child a::after{background:linear-gradient(105deg,transparent,rgba(255,255,255,.75) 50%,transparent)}
+@keyframes reflet{from{left:-75%}to{left:130%}}
+@media(max-width:1100px) and (min-width:901px){header.site nav a{padding:9px 12px;font-size:.74rem;letter-spacing:.8px}}
+@media(max-width:900px){header.site nav li a{display:block;padding:13px 18px;margin:4px 0;border-radius:12px}}
+@media(prefers-reduced-motion:reduce){header.site nav a:hover::after{animation:none}header.site nav a{transition:none}}
+header.site nav a{white-space:nowrap;padding:9px 15px}
+header.site nav ul{gap:4px}
+.brand{flex-shrink:0}.brand strong,.brand small{white-space:nowrap}
+@media(max-width:1180px) and (min-width:901px){.brand small{display:none}.brand strong{font-size:1rem}header.site nav a{padding:8px 11px;font-size:.72rem;letter-spacing:.6px}}
