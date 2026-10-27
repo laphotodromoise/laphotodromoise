@@ -152,3 +152,9 @@ header.site nav a{white-space:nowrap;padding:9px 15px}
 header.site nav ul{gap:4px}
 .brand{flex-shrink:0}.brand strong,.brand small{white-space:nowrap}
 @media(max-width:1180px) and (min-width:901px){.brand small{display:none}.brand strong{font-size:1rem}header.site nav a{padding:8px 11px;font-size:.72rem;letter-spacing:.6px}}
+/* Reflet sur les boutons (Demander un devis, Réserver, Envoyer…) */
+.btn{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(135deg,#a8743f,#d9a96a 50%,#a8743f);border-color:#d9a96a;color:#140d06;box-shadow:0 4px 18px rgba(196,138,82,.25);transition:transform .25s,box-shadow .25s,background .25s}
+.btn::after{content:"";position:absolute;z-index:-1;top:-20%;bottom:-20%;left:-75%;width:45%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.75) 50%,transparent);transform:skewX(-20deg);pointer-events:none}
+.btn:hover,.btn:focus-visible{background:linear-gradient(135deg,#b88049,#ecc184 50%,#b88049);color:#140d06;transform:translateY(-1px);box-shadow:0 6px 24px rgba(196,138,82,.4)}
+.btn:hover::after,.btn:focus-visible::after{animation:reflet .8s ease forwards}
+@media(prefers-reduced-motion:reduce){.btn:hover::after{animation:none}}
