@@ -188,6 +188,8 @@ background:radial-gradient(ellipse 70% 90% at 50% 120%,rgba(196,138,82,.32),tran
 .hero-cuivre .sub{color:#e8d6c0}
 @media(max-width:900px){.hero-cuivre{padding:80px 0 70px}.hero-cuivre::before{width:70vw;right:-20%}}
 /* Qualités : photos un peu plus grandes (bord à bord en haut de la carte) */
-.card.qual{padding:0 0 26px;overflow:hidden}
-.card.qual img{border-radius:0;margin-bottom:22px}
-.card.qual h3,.card.qual p{padding-inline:24px}
+.card.qual{padding:12px 12px 26px;overflow:hidden}
+.card.qual img{border-radius:calc(var(--r) - 2px);margin-bottom:22px}
+.card.qual h3,.card.qual p{padding-inline:12px}
+.grid.g3:has(> .card.qual){gap:16px}
+@media(min-width:1260px){.grid.g3:has(> .card.qual){margin-inline:-28px}}
