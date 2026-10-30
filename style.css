@@ -265,3 +265,4 @@ background:radial-gradient(ellipse 90% 60% at 50% 0%,rgba(196,138,82,.22),transp
 .zones-villes li{padding:6px 14px;border-radius:999px;border:1px solid rgba(196,138,82,.4);background:rgba(196,138,82,.06);font-size:.88rem;color:#e9e2da}
 .zones-dep{text-align:center;font-size:.92rem;margin:0}
 .zones-dep strong{color:#fff}
+.frames-wrap{display:grid;gap:16px}
