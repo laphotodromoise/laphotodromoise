@@ -257,3 +257,11 @@ background:radial-gradient(ellipse 90% 60% at 50% 0%,rgba(196,138,82,.22),transp
 .cta-final h2{margin:0;font-size:clamp(1.6rem,3.2vw,2.3rem);font-weight:800;text-transform:uppercase;letter-spacing:1px;text-wrap:balance}
 .cta-final p{margin:0 0 8px;max-width:52ch;color:var(--muted);font-size:1.05rem}
 .cta-final .btn{font-size:1.05rem;padding:16px 34px}
+/* Zones d'intervention (remplace le bloc de mots-clés) */
+.seo{font-size:1rem}
+.zones-titre{text-align:center;color:var(--accent)!important;font-size:1.25rem!important;margin:8px 0 10px}
+.zones-texte{max-width:68ch;margin:0 auto 20px;text-align:center;color:#d6cfc7}
+.zones-villes{list-style:none;margin:0 auto 16px;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:900px}
+.zones-villes li{padding:6px 14px;border-radius:999px;border:1px solid rgba(196,138,82,.4);background:rgba(196,138,82,.06);font-size:.88rem;color:#e9e2da}
+.zones-dep{text-align:center;font-size:.92rem;margin:0}
+.zones-dep strong{color:#fff}
