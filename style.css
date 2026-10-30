@@ -278,3 +278,4 @@ background:radial-gradient(ellipse 90% 60% at 50% 0%,rgba(196,138,82,.22),transp
 .avis-m-grid{columns:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
 .avis-m-col{display:grid;gap:20px}.avis-m{margin:0}
 @media(max-width:900px){.avis-m-grid{grid-template-columns:1fr}}
+.avatar-lettre{display:grid;place-items:center;color:#fff;font-weight:700;font-size:1.4rem}
