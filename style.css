@@ -227,3 +227,15 @@ background:radial-gradient(ellipse 90% 60% at 50% 0%,rgba(196,138,82,.22),transp
 .n1-atouts li{color:#3c4043}
 .n1-atouts svg{background:#f1f3f4;stroke:#a8743f}
 .n1-g{width:26px;height:26px}
+/* Bannière animée : logo + accroche + boutons */
+.hero-anim{height:auto;min-height:clamp(380px,40vw,560px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding-block:34px 40px}
+.hero-anim-logo{position:relative;inset:auto;margin:0;height:clamp(170px,21vw,290px);max-width:80%}
+.hero-anim-texte{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center;padding-inline:max(16px,env(safe-area-inset-left,0px));animation:texteEntree .9s ease 1.5s both}
+.hero-anim-accroche{margin:0;font-size:clamp(1.05rem,2vw,1.45rem);font-weight:700;color:#4a2f17;letter-spacing:.3px;text-wrap:balance}
+.hero-anim-boutons{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.btn.btn-contour{background:rgba(255,255,255,.35);color:#5a3a1c;border-color:#a8743f;box-shadow:none}
+.btn.btn-contour:hover{background:rgba(255,255,255,.7);color:#3d260f}
+@keyframes texteEntree{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:560px){.hero-anim-boutons{flex-direction:column;width:100%;max-width:300px}.hero-anim-boutons .btn{text-align:center}}
+@media(prefers-reduced-motion:reduce){.hero-anim-texte{animation:none}}
+.hero-anim-accroche{text-shadow:0 0 12px rgba(251,244,234,.9),0 0 3px rgba(251,244,234,.9)}
