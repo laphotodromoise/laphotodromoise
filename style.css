@@ -166,7 +166,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 .confettis{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hero-anim-logo{position:absolute;inset:0;margin:auto;height:84%;width:auto;aspect-ratio:847/900;max-width:90%;animation:logoEntree 1.4s cubic-bezier(.2,.8,.2,1) .35s both,logoRespire 6s ease-in-out 2s infinite}
 .hero-anim-logo img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 6px 18px rgba(120,80,40,.18))}
-.hero-anim-reflet{position:absolute;inset:0;-webkit-mask:url("images/logo-anim.png") center/contain no-repeat;mask:url("images/logo-anim.png") center/contain no-repeat;
+.hero-anim-reflet{position:absolute;inset:0;-webkit-mask:url("images/logo-anim.webp") center/contain no-repeat;mask:url("images/logo-anim.webp") center/contain no-repeat;
 background:linear-gradient(105deg,transparent 35%,rgba(255,248,235,.95) 50%,transparent 65%) no-repeat;background-size:250% 100%;background-position:150% 0;animation:logoReflet 7s ease-in-out 1.9s infinite}
 .hero-anim-flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;animation:flash .9s ease-out .1s both}
 @keyframes logoEntree{from{opacity:0;transform:scale(.8) rotate(-10deg);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
@@ -183,7 +183,7 @@ background:linear-gradient(105deg,transparent 35%,rgba(255,248,235,.95) 50%,tran
 /* Fond des titres de page : noir et cuivre */
 .hero-cuivre{position:relative;overflow:hidden;isolation:isolate;padding:110px 0 100px;
 background:radial-gradient(ellipse 70% 90% at 50% 120%,rgba(196,138,82,.32),transparent 65%),radial-gradient(ellipse 50% 60% at 10% -10%,rgba(196,138,82,.14),transparent 60%),#050505;border-bottom:1px solid rgba(196,138,82,.35)}
-.hero-cuivre::before{content:"";position:absolute;z-index:-1;right:-4%;top:50%;width:min(46vw,520px);aspect-ratio:847/900;transform:translateY(-50%) rotate(-8deg);background:url("images/logo-anim.png") center/contain no-repeat;opacity:.07;filter:grayscale(.2) brightness(1.6)}
+.hero-cuivre::before{content:"";position:absolute;z-index:-1;right:-4%;top:50%;width:min(46vw,520px);aspect-ratio:847/900;transform:translateY(-50%) rotate(-8deg);background:url("images/logo-anim.webp") center/contain no-repeat;opacity:.07;filter:grayscale(.2) brightness(1.6)}
 .hero-cuivre::after{content:"";position:absolute;left:50%;bottom:0;width:min(60%,520px);height:2px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,#d9a96a,transparent)}
 .hero-cuivre .sub{color:#e8d6c0}
 @media(max-width:900px){.hero-cuivre{padding:80px 0 70px}.hero-cuivre::before{width:70vw;right:-20%}}
@@ -252,7 +252,7 @@ background:radial-gradient(ellipse 90% 60% at 50% 0%,rgba(196,138,82,.22),transp
 @media(max-width:900px){.atouts-plus{grid-template-columns:1fr}}
 /* Dernier appel à l'action, bas de l'accueil */
 .cta-final{position:relative;overflow:hidden;isolation:isolate;padding-block:80px;text-align:center;background:radial-gradient(ellipse 60% 120% at 50% 120%,rgba(196,138,82,.35),transparent 70%),#080706;border-top:1px solid rgba(196,138,82,.35)}
-.cta-final::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:min(60vw,420px);aspect-ratio:847/900;transform:translate(-50%,-50%);background:url("images/logo-anim.png") center/contain no-repeat;opacity:.06}
+.cta-final::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:min(60vw,420px);aspect-ratio:847/900;transform:translate(-50%,-50%);background:url("images/logo-anim.webp") center/contain no-repeat;opacity:.06}
 .cta-final-in{display:flex;flex-direction:column;align-items:center;gap:16px}
 .cta-final h2{margin:0;font-size:clamp(1.6rem,3.2vw,2.3rem);font-weight:800;text-transform:uppercase;letter-spacing:1px;text-wrap:balance}
 .cta-final p{margin:0 0 8px;max-width:52ch;color:var(--muted);font-size:1.05rem}
