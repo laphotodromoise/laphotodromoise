@@ -239,3 +239,5 @@ background:radial-gradient(ellipse 90% 60% at 50% 0%,rgba(196,138,82,.22),transp
 @media(max-width:560px){.hero-anim-boutons{flex-direction:column;width:100%;max-width:300px}.hero-anim-boutons .btn{text-align:center}}
 @media(prefers-reduced-motion:reduce){.hero-anim-texte{animation:none}}
 .hero-anim-accroche{text-shadow:0 0 12px rgba(251,244,234,.9),0 0 3px rgba(251,244,234,.9)}
+.n1-merci{margin-top:12px!important;padding-top:12px;border-top:1px solid #e0c9a8;display:inline-block;font-size:1.05rem;color:#3c4043;font-style:italic}
+.n1-merci+.n1-note{margin-top:14px}
