@@ -2,6 +2,9 @@
    L'e-mail reçu indique clairement qu'il vient du site La Photo Drômoise. */
 (function () {
   var DEST = 'laphotodromoise@gmail.com';
+  // Adresse du script Google (Apps Script) une fois installé — voir google-apps-script/LISEZ-MOI.md.
+  // Tant qu'elle est vide, les demandes passent par FormSubmit.
+  var SCRIPT_GOOGLE = '';
   var forms = document.querySelectorAll('form.devis');
   if (!forms.length || !window.fetch) return;
 
@@ -60,11 +63,21 @@
       };
 
       btn.disabled = true; var label = btn.textContent; btn.textContent = 'Envoi en cours…';
-      fetch('https://formsubmit.co/ajax/' + DEST, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
-      }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      var envoi;
+      if (SCRIPT_GOOGLE) {
+        var p = new URLSearchParams();
+        Object.keys(data).forEach(function (k) { if (k.charAt(0) !== '_') p.append(k, data[k]); });
+        envoi = fetch(SCRIPT_GOOGLE, { method: 'POST', body: p })
+          .then(function (r) { return r.json().catch(function () { return { success: r.ok ? 'true' : 'false' }; })
+            .then(function (j) { return { ok: r.ok, j: j }; }); });
+      } else {
+        envoi = fetch('https://formsubmit.co/ajax/' + DEST, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); });
+      }
+      envoi
         .then(function (x) {
           if (x.ok && String(x.j.success) === 'true') {
             [].forEach.call(f.children, function (c) { if (c !== ok) c.hidden = true; });
