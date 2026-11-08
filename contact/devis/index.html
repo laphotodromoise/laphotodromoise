@@ -23,7 +23,7 @@
 <div>
 <p class="lead">📩 <strong>Demandez votre devis personnalisé</strong> Remplissez notre formulaire en ligne et recevez votre devis par e-mail sous 48 heures maximum. Simple, rapide et sans engagement — on s'occupe du reste !</p>
 <form class="devis" action="https://formsubmit.co/laphotodromoise@gmail.com" method="POST">
-<input type="hidden" name="_subject" value="Nouvelle demande de devis – site La Photo Drômoise">
+<input type="hidden" name="_subject" value="📸 La Photo Drômoise · Demande de devis (laphotodromoise.com)">
 <input type="hidden" name="_template" value="table">
 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 <div class="row2">
@@ -80,4 +80,5 @@ const lb=document.querySelector('.lightbox');
 if(lb){const im=lb.querySelector('img');document.querySelectorAll('.gi').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();im.src=a.href;lb.hidden=false}));
 lb.addEventListener('click',()=>{lb.hidden=true;im.src=''});document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.click()})}
 </script>
+<script src="../../devis.js" defer></script>
 </body></html>
