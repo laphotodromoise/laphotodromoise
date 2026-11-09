@@ -16,7 +16,7 @@
 <header class="site"><div class="wrap hd">
 <a class="brand" href="../"><img src="../images/2be35024fd.png" alt="La Photo Drômoise"><span><strong>La Photo Drômoise</strong><small>Créateur et distributeur de sourires</small></span></a>
 <button class="burger" aria-label="Menu" aria-expanded="false">☰ Menu</button>
-<nav><ul><li><a href="../">Accueil</a></li><li><a href="../nosbornes/" class=on>Nos Bornes à Selfie</a></li><li><a href="../photobooth-mariage/">Photobooth Mariage</a></li><li><a href="../les-dossiers/">Les Dossiers</a></li><li><a href="../contact/devis/">Contact / Devis</a></li></ul></nav></div></header>
+<nav><ul><li><a href="../">Accueil</a></li><li><a href="../nosbornes/" class=on>Nos Bornes à Selfie</a></li><li class="has-sub"><button type="button" class="sub-toggle" aria-expanded="false">Événements <span aria-hidden="true">▾</span></button><ul class="sub"><li><a href="../photobooth-mariage/">Mariage</a></li><li><a href="../photobooth-anniversaire/">Anniversaire</a></li><li><a href="../photobooth-entreprise/">Entreprise</a></li></ul></li><li><a href="../les-dossiers/">Les Dossiers</a></li><li><a href="../contact/devis/">Contact / Devis</a></li></ul></nav></div></header>
 <main><section class="hero hero-cuivre">
 <div class="wrap center"><h1>Nos bornes à selfie</h1><p class='sub'>Fabriquées à la main dans la Drôme avec du bois <span class="tricolore">français</span></p></div></section>
 <section class="sec"><div class="wrap split">
@@ -141,4 +141,5 @@ if(lb){const im=lb.querySelector('img');document.querySelectorAll('.gi').forEach
 lb.addEventListener('click',()=>{lb.hidden=true;im.src=''});document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.click()})}
 </script>
 <script src="../devis.js" defer></script>
+<script>/*lpdSub*/document.querySelectorAll(".sub-toggle").forEach(function(b){b.addEventListener("click",function(e){e.stopPropagation();var o=b.parentNode.classList.toggle("open");b.setAttribute("aria-expanded",o)})});document.addEventListener("click",function(){document.querySelectorAll(".has-sub.open").forEach(function(l){l.classList.remove("open");l.querySelector(".sub-toggle").setAttribute("aria-expanded","false")})});</script>
 </body></html>

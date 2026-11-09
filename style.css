@@ -300,3 +300,29 @@ background:radial-gradient(ellipse 90% 60% at 50% 0%,rgba(196,138,82,.22),transp
 .devis-ok p{margin:0}.devis-ok-titre{font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:8px!important}
 .devis [hidden]{display:none!important}
 .devis .opt.consent{display:block}.devis .opt.consent input{margin:0 8px 0 0;vertical-align:-2px}
+/* Pages Anniversaire / Entreprise */
+.page-photo{width:100%;height:auto;border-radius:var(--r);box-shadow:0 18px 50px rgba(0,0,0,.5)}
+.avis-seul{max-width:720px;margin:0 auto}
+/* Menu : sous-menu « Événements » */
+header.site nav li.has-sub{position:relative}
+.sub-toggle{position:relative;overflow:hidden;isolation:isolate;display:inline-block;padding:9px 15px;border-radius:999px;border:1px solid transparent;background:none;color:#e9e2da;font:inherit;font-size:.8rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:color .25s,background-color .25s,border-color .25s}
+.sub-toggle span{font-size:.7em;margin-left:2px}
+.sub-toggle::after{content:"";position:absolute;z-index:-1;top:-20%;bottom:-20%;left:-75%;width:45%;background:linear-gradient(105deg,transparent,rgba(255,240,220,.55) 50%,transparent);transform:skewX(-20deg)}
+.sub-toggle:hover,.sub-toggle:focus-visible,.has-sub.open .sub-toggle{color:#fff;background:rgba(196,138,82,.14);border-color:rgba(196,138,82,.55);outline:none}
+.sub-toggle:hover::after{animation:reflet .8s ease forwards}
+.sub-toggle.on{color:#fff;border-color:rgba(196,138,82,.7);background:rgba(196,138,82,.1)}
+header.site nav ul.sub{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);min-width:190px;margin:0;padding:8px;list-style:none;flex-direction:column;gap:2px;background:#0b0b0b;border:1px solid rgba(196,138,82,.45);border-radius:14px;box-shadow:0 14px 40px rgba(0,0,0,.6);z-index:70}
+header.site nav ul.sub::before{content:"";position:absolute;left:0;right:0;top:-10px;height:10px}
+header.site nav li.has-sub:hover>ul.sub,header.site nav li.has-sub:focus-within>ul.sub,header.site nav li.has-sub.open>ul.sub{display:flex}
+header.site nav ul.sub a{display:block;border-radius:10px;text-align:left}
+@media(max-width:900px){
+ .sub-toggle{display:block;width:100%;text-align:left;padding:13px 18px;margin:4px 0;border-radius:12px;pointer-events:none}
+ .sub-toggle span{display:none}
+ header.site nav ul.sub{display:flex;position:static;transform:none;min-width:0;padding:0 0 0 14px!important;background:none;border:0;box-shadow:none}
+ header.site nav ul.sub::before{display:none}
+}
+header.site nav ul.sub li:last-child a{color:#e9e2da;background:none;border-color:transparent;box-shadow:none}
+header.site nav ul.sub li:last-child a:hover,header.site nav ul.sub li:last-child a:focus-visible{color:#fff;background:rgba(196,138,82,.14);border-color:rgba(196,138,82,.55)}
+header.site nav ul.sub li:last-child a::after{background:linear-gradient(105deg,transparent,rgba(255,240,220,.55) 50%,transparent)}
+header.site nav ul.sub a.on{color:#fff;border-color:rgba(196,138,82,.7)!important;background:rgba(196,138,82,.1)!important}
+@media(max-width:900px){.sub-toggle{text-align:center;color:var(--accent);font-size:.72rem;letter-spacing:2px;padding:10px 18px 2px;border:0!important;background:none!important}header.site nav ul.sub{padding:0!important}header.site nav ul.sub a{text-align:center;font-size:.76rem}}
