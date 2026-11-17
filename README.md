@@ -10,4 +10,4 @@ Copie du site laphotodromoise.com (7 pages, mêmes adresses), prête pour GitHub
 Si l'action échoue avec « Permission denied » : Settings › Actions › General › Workflow permissions › **Read and write permissions** › Save, puis relancer.
 
 ## Formulaire de devis
-Envoyé via FormSubmit vers laphotodromoise@gmail.com. La première demande déclenche un mail d'activation : cliquer le lien une fois.
+Envoyé par le script Google Apps Script du compte laphotodromoise@gmail.com (voir `google-apps-script/`) : e-mail aux couleurs du site + ligne dans le tableau Google Sheets « Demandes de devis – La Photo Drômoise ». L'adresse du script est dans `devis.js` (`SCRIPT_GOOGLE`). FormSubmit n'est plus utilisé depuis le 17/11/2026 (envois bloqués et doublons).

@@ -1,9 +1,9 @@
-/* Envoi du formulaire de devis vers laphotodromoise@gmail.com (FormSubmit).
+/* Envoi du formulaire de devis vers laphotodromoise@gmail.com via le script Google (dossier google-apps-script).
    L'e-mail reçu indique clairement qu'il vient du site La Photo Drômoise. */
 (function () {
   var DEST = 'laphotodromoise@gmail.com';
   // Adresse du script Google (Apps Script) une fois installé — voir google-apps-script/LISEZ-MOI.md.
-  // Tant qu'elle est vide, les demandes passent par FormSubmit.
+  // Si elle était vidée, les demandes repasseraient par FormSubmit (ancien service, déconseillé).
   var SCRIPT_GOOGLE = 'https://script.google.com/macros/s/AKfycbyYT-M8uxpb8BDm9AHk5D0yeD03fWa7ZEcXtd1H2sXP_fhwseRA0EYXE9QQ564-P1i4/exec';
   var forms = document.querySelectorAll('form.devis');
   if (!forms.length || !window.fetch) return;
