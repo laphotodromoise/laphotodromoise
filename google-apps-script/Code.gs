@@ -11,7 +11,7 @@
 var CONFIG = {
   destinataire: 'laphotodromoise@gmail.com',
   nomExpediteur: 'Site La Photo Drômoise',
-  logo: 'https://www.laphotodromoise.com/images/2be35024fd.png',
+  logo: 'https://laphotodromoise.github.io/laphotodromoise/images/2be35024fd.png',
   site: 'https://www.laphotodromoise.com/',
   enregistrerDansSheets: true            // false pour ne pas créer de tableau de suivi
 };
