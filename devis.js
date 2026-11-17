@@ -4,7 +4,7 @@
   var DEST = 'laphotodromoise@gmail.com';
   // Adresse du script Google (Apps Script) une fois installé — voir google-apps-script/LISEZ-MOI.md.
   // Tant qu'elle est vide, les demandes passent par FormSubmit.
-  var SCRIPT_GOOGLE = '';
+  var SCRIPT_GOOGLE = 'https://script.google.com/macros/s/AKfycbyYT-M8uxpb8BDm9AHk5D0yeD03fWa7ZEcXtd1H2sXP_fhwseRA0EYXE9QQ564-P1i4/exec';
   var forms = document.querySelectorAll('form.devis');
   if (!forms.length || !window.fetch) return;
 
