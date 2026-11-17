@@ -56,7 +56,7 @@
         'Code société': val('Code société') || '—',
         'Nous a connus par': val('Source') || 'Non précisé',
         'Message': val('Message') || '—',
-        '_subject': '📸 La Photo Drômoise · Demande de devis · ' + type + ' · ' + nom,
+        '_subject': '📸 Nouvelle demande de devis · ' + nom + ' · ' + type,
         '_replyto': val('email'),
         '_template': 'table',
         '_captcha': 'false'

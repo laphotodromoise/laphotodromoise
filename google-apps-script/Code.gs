@@ -38,7 +38,7 @@ function doPost(e) {
 
   var type = d["Type d'événement"] || 'Événement';
   var nom = d['Nom & prénom'];
-  var sujet = '📸 La Photo Drômoise · Demande de devis · ' + type + ' · ' + nom;
+  var sujet = '📸 Nouvelle demande de devis · ' + nom + ' · ' + type;
 
   MailApp.sendEmail({
     to: CONFIG.destinataire,
