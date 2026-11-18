@@ -14,8 +14,23 @@
     return p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : d;
   }
 
+  var debut = Date.now();   // anti-spam : un humain met plusieurs secondes à remplir le formulaire
+  function aujourdhui() {
+    var d = new Date(), m = d.getMonth() + 1, j = d.getDate();
+    return d.getFullYear() + '-' + (m < 10 ? '0' : '') + m + '-' + (j < 10 ? '0' : '') + j;
+  }
+
   [].forEach.call(forms, function (f) {
     var btn = f.querySelector('button[type=submit]');
+
+    // Pas de date passée
+    var champDate = f.elements['Date'];
+    if (champDate) champDate.min = aujourdhui();
+    if (champDate) champDate.addEventListener('input', function () {
+      champDate.setCustomValidity(champDate.value && champDate.value < aujourdhui()
+        ? "La date de l'événement ne peut pas être dans le passé." : '');
+    });
+
     var err = document.createElement('p');
     err.className = 'devis-erreur'; err.hidden = true; err.setAttribute('role', 'alert');
     btn.insertAdjacentElement('afterend', err);
@@ -36,6 +51,7 @@
     f.addEventListener('submit', function (e) {
       e.preventDefault();
       if (val('_honey')) return;
+      if (champDate) champDate.dispatchEvent(new Event('input'));
       if (!f.checkValidity()) { f.reportValidity(); return; }
       err.hidden = true;
 
@@ -67,6 +83,8 @@
       if (SCRIPT_GOOGLE) {
         var p = new URLSearchParams();
         Object.keys(data).forEach(function (k) { if (k.charAt(0) !== '_') p.append(k, data[k]); });
+        p.append('_duree', String(Math.round((Date.now() - debut) / 1000)));
+        p.append('_honey', val('_honey'));
         envoi = fetch(SCRIPT_GOOGLE, { method: 'POST', body: p })
           .then(function (r) { return r.json().catch(function () { return { success: r.ok ? 'true' : 'false' }; })
             .then(function (j) { return { ok: r.ok, j: j }; }); });

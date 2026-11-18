@@ -33,8 +33,14 @@ var CHAMPS = [
 
 function doPost(e) {
   var d = (e && e.parameter) || {};
-  if (d._honey) return json_({ success: 'true' });           // robot : on ignore sans rien dire
   if (!d['Nom & prénom'] || !d['E-mail']) return json_({ success: 'false', message: 'Champs manquants' });
+
+  // Anti-spam : une demande suspecte n'envoie pas d'e-mail, elle est rangée dans l'onglet « Spam » du tableau.
+  var raison = raisonSpam_(d);
+  if (raison) {
+    try { enregistrer_(d, 'Spam', raison); } catch (err) { console.error(err); }
+    return json_({ success: 'true' });                      // on ne prévient pas le robot
+  }
 
   var type = d["Type d'événement"] || 'Événement';
   var nom = d['Nom & prénom'];
@@ -50,7 +56,7 @@ function doPost(e) {
   });
 
   if (CONFIG.enregistrerDansSheets) {
-    try { enregistrer_(d); } catch (err) { console.error(err); }
+    try { enregistrer_(d, null, ''); } catch (err) { console.error(err); }
   }
   return json_({ success: 'true' });
 }
@@ -122,20 +128,68 @@ function emailTexte_(d) {
   return t + '\nEnvoyé depuis laphotodromoise.com';
 }
 
+/* ---------- Anti-spam ---------- */
+// Renvoie la raison si la demande ressemble à un robot, sinon ''.
+// Une raison « forte » suffit ; il faut deux raisons « faibles ».
+function raisonSpam_(d) {
+  var fortes = [], faibles = [];
+
+  if (d._honey) fortes.push('champ piège rempli');
+
+  // Remplissage trop rapide (le site envoie le temps passé sur le formulaire, en secondes)
+  if (d._duree === undefined || d._duree === '') faibles.push('envoi hors du site');
+  else if (Number(d._duree) < 4) fortes.push('rempli en ' + d._duree + ' s');
+
+  // Date de l'événement dans le passé (format JJ/MM/AAAA)
+  var m = String(d["Date de l'événement"] || '').match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+  if (m) {
+    var date = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]));
+    var hier = new Date(); hier.setDate(hier.getDate() - 2);
+    if (date < hier) fortes.push('date passée');
+  }
+
+  // Charabia : suites de lettres au hasard (« jBCszBMjPXgLmKjWNt »)
+  ['Nom & prénom', 'Lieu', 'Code société', 'Message'].forEach(function (k) {
+    if (charabia_(d[k])) fortes.push('charabia dans « ' + k + ' »');
+  });
+
+  // Adresse Gmail truffée de points (a.vosi.d.aw.uc.e51@gmail.com)
+  var mail = String(d['E-mail'] || '').toLowerCase().split('@');
+  if (mail.length === 2 && /^(gmail|googlemail)\.com$/.test(mail[1]) && (mail[0].match(/\./g) || []).length >= 3) {
+    faibles.push('e-mail à points multiples');
+  }
+
+  if (fortes.length) return fortes.concat(faibles).join(', ');
+  if (faibles.length >= 2) return faibles.join(', ');
+  return '';
+}
+
+function charabia_(v) {
+  return String(v || '').split(/\s+/).some(function (mot) {
+    if (mot.length < 10 || !/^[A-Za-z]+$/.test(mot)) return false;
+    var bascules = (mot.match(/[a-z][A-Z]/g) || []).length;   // minuscule puis majuscule au milieu du mot
+    return bascules >= 3;
+  });
+}
+
 /* ---------- Tableau de suivi Google Sheets ---------- */
-function enregistrer_(d) {
+// onglet : null = premier onglet (demandes), sinon nom de l'onglet (« Spam »)
+function enregistrer_(d, onglet, raison) {
   var props = PropertiesService.getScriptProperties();
   var id = props.getProperty('SHEET_ID'), ss;
   if (id) { ss = SpreadsheetApp.openById(id); }
   else { ss = SpreadsheetApp.create('Demandes de devis – La Photo Drômoise'); props.setProperty('SHEET_ID', ss.getId()); }
-  var sh = ss.getSheets()[0];
+  var sh = onglet ? (ss.getSheetByName(onglet) || ss.insertSheet(onglet)) : ss.getSheets()[0];
   var entetes = ['Reçu le', 'Page'].concat(CHAMPS.map(function (c) { return c[1]; })).concat(['Message']);
+  if (onglet) entetes.push('Pourquoi bloqué');
   if (sh.getLastRow() === 0) {
     sh.appendRow(entetes);
     sh.getRange(1, 1, 1, entetes.length).setFontWeight('bold').setBackground('#c48a52').setFontColor('#140d06');
     sh.setFrozenRows(1);
   }
-  sh.appendRow([new Date(), d['Envoyé depuis la page'] || ''].concat(CHAMPS.map(function (c) { return d[c[0]] || ''; })).concat([d['Message'] || '']));
+  var ligne = [new Date(), d['Envoyé depuis la page'] || ''].concat(CHAMPS.map(function (c) { return d[c[0]] || ''; })).concat([d['Message'] || '']);
+  if (onglet) ligne.push(raison);
+  sh.appendRow(ligne);
 }
 
 function json_(o) {
@@ -149,6 +203,6 @@ function testerEnvoi() {
     'E-mail': CONFIG.destinataire, "Type d'événement": 'Mariage', "Date de l'événement": '12/06/2027',
     'Lieu': 'Domaine des Oliviers, Crest', "Nombre d'invités": '120', 'Formule souhaitée': 'Offre Confort (400 tirages)',
     'Options': "La valisette à accessoires, Livre d'or audio", 'Code société': '—', 'Nous a connus par': 'Réseaux sociaux',
-    'Message': 'Bonjour ! Ceci est un e-mail de test du formulaire du site.'
+    'Message': 'Bonjour ! Ceci est un e-mail de test du formulaire du site.', '_duree': '60'
   }});
 }
