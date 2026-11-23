@@ -65,6 +65,16 @@ function doGet() {
   return ContentService.createTextOutput('Formulaire La Photo Drômoise : en service.');
 }
 
+/* « 10/07/2027 » → « samedi 10 juillet 2027 » (dans l'e-mail ; le tableau garde 10/07/2027 pour pouvoir trier) */
+function dateLongue_(v) {
+  var m = String(v || '').match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+  if (!m) return v;
+  var jours = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+  var mois = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+  var d = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]));
+  return jours[d.getDay()] + ' ' + d.getDate() + (d.getDate() === 1 ? 'er' : '') + ' ' + mois[d.getMonth()] + ' ' + d.getFullYear();
+}
+
 /* ---------- E-mail HTML (styles en ligne pour Gmail) ---------- */
 function emailHtml_(d) {
   var cuivre = '#c48a52', noir = '#0b0b0b', carte = '#161310', ligne = '#3a2c1e', texte = '#efe7dd', gris = '#b3a89c';
@@ -74,7 +84,7 @@ function emailHtml_(d) {
   var lignes = CHAMPS.map(function (c) {
     var v = d[c[0]];
     if (!v) return '';
-    var val = esc(v);
+    var val = esc(c[0] === "Date de l'événement" ? dateLongue_(v) : v);
     if (c[0] === 'E-mail') val = '<a href="mailto:' + esc(v) + '" style="color:' + cuivre + ';text-decoration:none">' + val + '</a>';
     if (c[0] === 'Téléphone' && tel) val = '<a href="tel:' + tel + '" style="color:' + cuivre + ';text-decoration:none">' + val + '</a>';
     return '<tr>' +
@@ -102,7 +112,7 @@ function emailHtml_(d) {
       '<img src="' + CONFIG.logo + '" width="84" height="84" alt="La Photo Drômoise" style="display:block;margin:0 auto 12px;border:0">' +
       '<p style="margin:0;color:#fff;font-size:20px;font-weight:bold;letter-spacing:2px;text-transform:uppercase">Nouvelle demande de devis</p>' +
       '<p style="margin:8px 0 0;color:' + cuivre + ';font-size:14px;font-style:italic">' + esc(d["Type d'événement"] || 'Événement') +
-        (d["Date de l'événement"] ? ' · ' + esc(d["Date de l'événement"]) : '') + (d['Lieu'] ? ' · ' + esc(d['Lieu']) : '') + '</p>' +
+        (d["Date de l'événement"] ? ' · ' + esc(dateLongue_(d["Date de l'événement"])) : '') + (d['Lieu'] ? ' · ' + esc(d['Lieu']) : '') + '</p>' +
     '</td></tr>' +
     // Infos
     '<tr><td style="padding:22px 28px 0"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:' + carte + ';border:1px solid ' + ligne + ';border-radius:10px">' + lignes + '</table></td></tr>' +
@@ -123,7 +133,9 @@ function emailHtml_(d) {
 
 function emailTexte_(d) {
   var t = 'Nouvelle demande de devis – La Photo Drômoise\n\n';
-  CHAMPS.forEach(function (c) { if (d[c[0]]) t += c[1] + ' : ' + d[c[0]] + '\n'; });
+  CHAMPS.forEach(function (c) {
+    if (d[c[0]]) t += c[1] + ' : ' + (c[0] === "Date de l'événement" ? dateLongue_(d[c[0]]) : d[c[0]]) + '\n';
+  });
   if (d['Message']) t += '\nMessage :\n' + d['Message'] + '\n';
   return t + '\nEnvoyé depuis laphotodromoise.com';
 }
