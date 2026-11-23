@@ -65,12 +65,12 @@ function doGet() {
   return ContentService.createTextOutput('Formulaire La Photo Drômoise : en service.');
 }
 
-/* « 10/07/2027 » → « samedi 10 juillet 2027 » (dans l'e-mail ; le tableau garde 10/07/2027 pour pouvoir trier) */
+/* « 10/07/2027 » → « Samedi 10 Juillet 2027 » (tableau de l'e-mail ; le titre et Google Sheets gardent 10/07/2027) */
 function dateLongue_(v) {
   var m = String(v || '').match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
   if (!m) return v;
-  var jours = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
-  var mois = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+  var jours = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+  var mois = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
   var d = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]));
   return jours[d.getDay()] + ' ' + d.getDate() + (d.getDate() === 1 ? 'er' : '') + ' ' + mois[d.getMonth()] + ' ' + d.getFullYear();
 }
@@ -112,7 +112,7 @@ function emailHtml_(d) {
       '<img src="' + CONFIG.logo + '" width="84" height="84" alt="La Photo Drômoise" style="display:block;margin:0 auto 12px;border:0">' +
       '<p style="margin:0;color:#fff;font-size:20px;font-weight:bold;letter-spacing:2px;text-transform:uppercase">Nouvelle demande de devis</p>' +
       '<p style="margin:8px 0 0;color:' + cuivre + ';font-size:14px;font-style:italic">' + esc(d["Type d'événement"] || 'Événement') +
-        (d["Date de l'événement"] ? ' · ' + esc(dateLongue_(d["Date de l'événement"])) : '') + (d['Lieu'] ? ' · ' + esc(d['Lieu']) : '') + '</p>' +
+        (d["Date de l'événement"] ? ' · ' + esc(d["Date de l'événement"]) : '') + (d['Lieu'] ? ' · ' + esc(d['Lieu']) : '') + '</p>' +
     '</td></tr>' +
     // Infos
     '<tr><td style="padding:22px 28px 0"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:' + carte + ';border:1px solid ' + ligne + ';border-radius:10px">' + lignes + '</table></td></tr>' +
